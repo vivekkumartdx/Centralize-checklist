@@ -1,0 +1,973 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+$dmi-navy:       #0B1F4B;
+$dmi-navy-mid:   #162D6A;
+$dmi-navy-light: #1E3A8A;
+$dmi-orange:     #F47920;
+$dmi-orange-dk:  #D4651A;
+$dmi-white:      #FFFFFF;
+$dmi-bg:         #F4F6FA;
+$dmi-border:     #DDE3EE;
+$dmi-text:       #1A2340;
+$dmi-muted:      #6B7590;
+$dmi-row-alt:    #F9FAFD;
+$dmi-green:      #1A7A3C;
+$dmi-green-bg:   #E6F4EC;
+$dmi-red:        #B91C1C;
+$dmi-red-bg:     #FEE2E2;
+$dmi-info-bg:    #EEF3FB;
+
+.fileUploaed {
+  font-family: 'Segoe UI', 'Inter', sans-serif;
+  color: $dmi-text;
+  background: $dmi-bg;
+  min-height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(11,31,75,0.08);
+}
+
+.header {
+  background: $dmi-navy;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -60px;
+    width: 220px; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(244,121,32,0.18) 100%);
+    pointer-events: none;
+  }
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brandLogo {
+  height: 36px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.headerDivider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.25);
+  flex-shrink: 0;
+}
+
+.brandMark {
+  width: 44px;
+  height: 44px;
+  background: $dmi-orange;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $dmi-white;
+  margin: 0 0 3px;
+  letter-spacing: -0.3px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.headerBadge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  background: $dmi-white;
+  border-bottom: 1px solid $dmi-border;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.uploadLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  background: $dmi-orange;
+  color: $dmi-white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(244,121,32,0.3);
+
+  &:hover {
+    background: $dmi-orange-dk;
+    box-shadow: 0 4px 12px rgba(244,121,32,0.35);
+  }
+}
+
+.uploadIcon {
+  font-size: 16px;
+}
+
+.fileInput {
+  display: none;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sourceChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: $dmi-info-bg;
+  color: $dmi-navy-light;
+  border: 1px solid $dmi-border;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sourceChipLocal {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: $dmi-green-bg;
+  color: $dmi-green;
+  border: 1px solid darken($dmi-green-bg, 8%);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.recordBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: $dmi-info-bg;
+  border: 1px solid $dmi-border;
+  color: $dmi-navy-light;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+.recordDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $dmi-orange;
+  display: inline-block;
+}
+
+.infoMsg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 28px;
+  background: $dmi-info-bg;
+  color: $dmi-navy-light;
+  font-size: 13px;
+  border-bottom: 1px solid $dmi-border;
+}
+
+.errorMsg {
+  margin: 16px 28px;
+  padding: 11px 16px;
+  background: $dmi-red-bg;
+  color: $dmi-red;
+  border-left: 4px solid $dmi-red;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.successMsg {
+  margin: 0 0 12px;
+  padding: 11px 16px;
+  background: $dmi-green-bg;
+  color: $dmi-green;
+  border-left: 4px solid $dmi-green;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  padding: 0 0 24px;
+}
+
+.tableInfo {
+  font-size: 12px;
+  color: $dmi-muted;
+  padding: 14px 28px 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th {
+    background: $dmi-navy;
+    color: $dmi-white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.08);
+
+    &:last-child { border-right: none; }
+  }
+
+  td {
+    padding: 11px 16px;
+    border-bottom: 1px solid $dmi-border;
+    vertical-align: middle;
+    color: $dmi-text;
+  }
+}
+
+.rowEven { background: $dmi-white; }
+.rowOdd  { background: $dmi-row-alt; }
+
+.indexCell {
+  color: $dmi-muted;
+  font-size: 12px;
+  font-weight: 600;
+  width: 40px;
+  text-align: center;
+}
+
+.docLink {
+  color: $dmi-navy-light;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+
+  &:hover { text-decoration: underline; color: $dmi-orange; }
+}
+
+.noLink {
+  color: $dmi-border;
+  font-weight: 600;
+}
+
+.spLink {
+  color: $dmi-navy-light;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  &:hover { color: $dmi-orange; text-decoration: underline; }
+}
+
+.spLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 13px;
+  background: $dmi-navy;
+  color: $dmi-white;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+
+  &:hover { background: $dmi-navy-light; }
+}
+
+.groupsWrapper {
+  padding: 0 0 24px;
+}
+
+.uploadGroup {
+  margin: 16px 28px 0;
+  border: 1px solid $dmi-border;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(11,31,75,0.06);
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  background: $dmi-navy;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $dmi-navy-mid;
+  }
+}
+
+.groupHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.groupToggle {
+  color: $dmi-orange;
+  font-size: 11px;
+  width: 14px;
+  flex-shrink: 0;
+}
+
+.groupIcon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.groupLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: $dmi-white;
+  letter-spacing: -0.1px;
+}
+
+.groupFileName {
+  display: block;
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 1px;
+}
+
+.groupBadge {
+  background: $dmi-orange;
+  color: $dmi-white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 11px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.groupBody {
+  overflow-x: auto;
+  background: $dmi-white;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 64px 24px;
+  color: $dmi-muted;
+}
+
+.emptyIconWrap {
+  width: 72px;
+  height: 72px;
+  background: $dmi-info-bg;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 32px;
+}
+
+.emptyTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: $dmi-text;
+  margin: 0 0 8px;
+}
+
+.emptyDesc {
+  font-size: 13px;
+  color: $dmi-muted;
+  line-height: 1.7;
+  margin: 0;
+
+  strong { color: $dmi-navy; }
+}
+
+.emptyIcon { font-size: 32px; }
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11,31,75,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+}
+
+.modalBox {
+  background: $dmi-white;
+  border-radius: 10px;
+  width: 92%;
+  max-width: 900px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(11,31,75,0.28);
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 26px;
+  background: $dmi-navy;
+  color: $dmi-white;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -40px;
+    width: 160px; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(244,121,32,0.2) 100%);
+    pointer-events: none;
+  }
+}
+
+.modalHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 1;
+}
+
+.modalFolderIcon {
+  width: 40px;
+  height: 40px;
+  background: $dmi-orange;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  color: $dmi-white;
+}
+
+.modalSubtitle {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  max-width: 620px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modalClose {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: $dmi-white;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  z-index: 1;
+  transition: background 0.15s;
+
+  &:hover { background: rgba(255,255,255,0.2); }
+}
+
+.modalBody {
+  padding: 22px 26px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.uploadSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.uploadSectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  background: $dmi-orange;
+  color: $dmi-white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(244,121,32,0.3);
+
+  &:hover {
+    background: $dmi-orange-dk;
+    box-shadow: 0 4px 12px rgba(244,121,32,0.35);
+  }
+}
+
+.spinnerSm {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: $dmi-white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.modalDivider {
+  border: none;
+  border-top: 1px solid $dmi-border;
+  margin: 16px 0;
+}
+
+.modalSpinner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: $dmi-muted;
+  font-size: 13px;
+  padding: 24px 0;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid $dmi-border;
+  border-top-color: $dmi-orange;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.modalEmpty {
+  color: $dmi-muted;
+  font-size: 13px;
+  padding: 28px 0;
+  text-align: center;
+}
+
+.modalFileCount {
+  font-size: 12px;
+  color: $dmi-muted;
+  margin-bottom: 10px;
+}
+
+.modalTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th {
+    background: $dmi-navy;
+    color: $dmi-white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.08);
+
+    &:last-child { border-right: none; }
+  }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid $dmi-border;
+    vertical-align: middle;
+  }
+}
+
+.fileNameCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.fileIcon { font-size: 16px; flex-shrink: 0; }
+
+.actionBtns {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.btnView {
+  display: inline-block;
+  padding: 4px 13px;
+  background: $dmi-navy;
+  color: $dmi-white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  transition: background 0.15s;
+
+  &:hover { background: $dmi-navy-light; }
+}
+
+.btnDownload {
+  display: inline-block;
+  padding: 4px 13px;
+  background: $dmi-white;
+  color: $dmi-orange;
+  border: 1.5px solid $dmi-orange;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  transition: background 0.15s;
+
+  &:hover { background: #fff5ee; }
+}
+
+.memberChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.memberChip {
+  display: inline-block;
+  padding: 3px 10px;
+  background: $dmi-info-bg;
+  color: $dmi-navy;
+  border: 1px solid $dmi-border;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.openFileLink {
+  display: inline-block;
+  padding: 4px 13px;
+  background: $dmi-navy;
+  color: $dmi-white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  &:hover { background: $dmi-navy-light; }
+}
+
+.groupHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.groupBadgeSecondary {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.sheetTabs {
+  display: flex;
+  gap: 0;
+  background: $dmi-bg;
+  border-bottom: 2px solid $dmi-border;
+  overflow-x: auto;
+  padding: 0 20px;
+}
+
+.sheetTab {
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $dmi-muted;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+
+  &:hover { color: $dmi-navy; }
+}
+
+.sheetTabActive {
+  color: $dmi-navy;
+  border-bottom-color: $dmi-orange;
+}
+
+.sheetTableWrap {
+  overflow-x: auto;
+}
+
+.sheetMeta {
+  display: flex;
+  gap: 24px;
+  padding: 10px 20px;
+  background: $dmi-info-bg;
+  border-bottom: 1px solid $dmi-border;
+  font-size: 12px;
+  color: $dmi-text;
+}
+
+.sheetMetaSpv {
+  strong { color: $dmi-navy; margin-right: 4px; }
+}
+
+.sheetMetaDate {
+  strong { color: $dmi-navy; margin-right: 4px; }
+}
+
+.checklistTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th {
+    background: $dmi-navy;
+    color: $dmi-white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    &:last-child { border-right: none; }
+  }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid $dmi-border;
+    vertical-align: top;
+    color: $dmi-text;
+    font-size: 13px;
+  }
+}
+
+.colSno         { width: 64px; }
+.colParticulars { min-width: 280px; }
+.colDept        { width: 140px; }
+.colMember      { width: 110px; }
+.colStatus      { width: 130px; }
+.colRemarks     { min-width: 180px; }
+.colDate        { width: 110px; white-space: nowrap; }
+.colDocs        { width: 90px; }
+
+.sectionRow {
+  background: #EEF1F8;
+  td {
+    padding: 9px 14px;
+    border-bottom: 2px solid $dmi-border;
+  }
+}
+
+.sectionNum {
+  font-size: 13px;
+  font-weight: 700;
+  color: $dmi-navy;
+  margin-right: 6px;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: $dmi-navy;
+}
+
+.groupLabelRow {
+  background: rgba(244,121,32,0.08);
+  td {
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: $dmi-orange-dk;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(244,121,32,0.2);
+  }
+}
+
+.continuationRow {
+  background: #FAFBFD;
+  td {
+    border-bottom: 1px solid #EEF0F4;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
+
+.snoCell {
+  color: $dmi-muted;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.particularsCell {
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.memberCell {
+  font-weight: 600;
+  color: $dmi-navy;
+  font-size: 12px;
+}
+
+.remarksCell {
+  font-size: 12px;
+  color: $dmi-muted;
+  line-height: 1.5;
+}
+
+.dateCell {
+  font-size: 12px;
+  color: $dmi-text;
+  white-space: nowrap;
+}
+
+.deptChip {
+  display: inline-block;
+  padding: 2px 9px;
+  background: $dmi-info-bg;
+  color: $dmi-navy-light;
+  border: 1px solid $dmi-border;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.noData {
+  color: $dmi-border;
+  font-weight: 500;
+}
+
+.statusContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDropdown {
+  padding: 4px 8px;
+  font-size: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background-color: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #9ca3af;
+    background-color: #f3f4f6;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  }
+}
+
+.statusMergedDropdown {
+  border: none;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.statusBadgeClickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.statusBadgeClickable:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
